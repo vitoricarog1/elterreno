@@ -1,9 +1,32 @@
 <?php
-require_once './galeria/gallerydev/includes/config.php';
-require_once './galeria/gallerydev/includes/functions.php';
+require_once 'admin/config.php';
 
 // Buscar os 3 últimos álbuns
-$albums = getAlbums(3);
+try {
+    $albums = $pdo->query("
+        SELECT a.*, COUNT(f.id) as total_fotos 
+        FROM albums a 
+        LEFT JOIN fotos f ON a.id = f.album_id AND f.ativo = 1
+        WHERE a.ativo = 1 
+        GROUP BY a.id 
+        ORDER BY a.created_at DESC 
+        LIMIT 3
+    ")->fetchAll();
+} catch (Exception $e) {
+    $albums = [];
+}
+
+// Buscar slides do carrossel
+try {
+    $slides = $pdo->query("
+        SELECT * FROM carrossel 
+        WHERE ativo = 1 
+        ORDER BY ordem, created_at 
+        LIMIT 5
+    ")->fetchAll();
+} catch (Exception $e) {
+    $slides = [];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -275,11 +298,31 @@ $albums = getAlbums(3);
     <!--  MENU  -->
 
     <!--  BANNER  -->
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-inner">
-            <div onclick="sitepecado()" class="carousel-item active"></div>
-            <div onclick="siteniver()" class="carousel-item"></div>
-            <div onclick="sitehalloween()" class="carousel-item"></div>
+            <?php if (!empty($slides)): ?>
+                <?php foreach ($slides as $index => $slide): ?>
+                    <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>" 
+                         <?= $slide['link'] ? 'onclick="window.open(\'' . sanitize($slide['link']) . '\', \'_blank\')" style="cursor: pointer;"' : '' ?>>
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="<?= UPLOAD_URL ?>carrossel/<?= $slide['imagem_mobile'] ?>">
+                            <img src="<?= UPLOAD_URL ?>carrossel/<?= $slide['imagem_desktop'] ?>" 
+                                 class="d-block w-100" alt="<?= sanitize($slide['titulo']) ?>">
+                        </picture>
+                        <div class="carousel-caption d-none d-md-block">
+                            <h1><?= sanitize($slide['titulo']) ?></h1>
+                            <?php if ($slide['subtitulo']): ?>
+                                <p><?= sanitize($slide['subtitulo']) ?></p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <!-- Slides padrão caso não haja no banco -->
+                <div class="carousel-item active"></div>
+                <div class="carousel-item"></div>
+                <div class="carousel-item"></div>
+            <?php endif; ?>
         </div>
         
         <!-- Controles de navegação -->
@@ -294,9 +337,13 @@ $albums = getAlbums(3);
         
         <!-- Indicadores -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <?php if (!empty($slides)): ?>
+                <?php foreach ($slides as $index => $slide): ?>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="<?= $index ?>" 
+                            <?= $index === 0 ? 'class="active" aria-current="true"' : '' ?> 
+                            aria-label="Slide <?= $index + 1 ?>"></button>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -327,8 +374,8 @@ $albums = getAlbums(3);
                                     </div>
                                 <?php endif; ?>
                                 
-                                <?php if ($album['foto_capa'] && file_exists(THUMB_PATH . $album['foto_capa'])): ?>
-                                    <img src="<?= THUMB_URL . $album['foto_capa'] ?>" alt="<?= sanitize($album['nome']) ?>">
+                                <?php if ($album['foto_capa'] && file_exists(UPLOAD_PATH . 'thumbs/' . $album['foto_capa'])): ?>
+                                    <img src="<?= UPLOAD_URL ?>thumbs/<?= $album['foto_capa'] ?>" alt="<?= sanitize($album['nome']) ?>">
                                 <?php else: ?>
                                     <i class="fas fa-camera placeholder-icon"></i>
                                 <?php endif; ?>
@@ -337,7 +384,7 @@ $albums = getAlbums(3);
                                 <h5 class="album-title"><?= sanitize($album['nome']) ?></h5>
                                 <div class="album-meta">
                                     <div class="mb-2">
-                                        <i class="fas fa-calendar me-2"></i><?= formatDate($album['data_evento']) ?>
+                                        <i class="fas fa-calendar me-2"></i><?= date('d/m/Y', strtotime($album['data_evento'])) ?>
                                     </div>
                                     <div class="mb-3">
                                         <i class="fas fa-tag me-2"></i><?= sanitize($album['edicao']) ?>
@@ -348,7 +395,7 @@ $albums = getAlbums(3);
                                         </span>
                                     </div>
                                 </div>
-                                <a href="<?= BASE_URL ?>gallerydev/album.php?id=<?= $album['id'] ?>" 
+                                <a href="galeria.php?album=<?= $album['id'] ?>" 
                                    class="btn btn-primary w-100">
                                     <i class="fas fa-eye me-2"></i>Ver Álbum
                                 </a>
@@ -359,7 +406,7 @@ $albums = getAlbums(3);
             </div>
             
             <div class="text-center mt-5">
-                <a href="<?= BASE_URL ?>" class="btn btn-outline-primary btn-lg">
+                <a href="galeria.php" class="btn btn-outline-primary btn-lg">
                     <i class="fas fa-th me-2"></i>Ver Todos os Álbuns
                 </a>
             </div>

@@ -1,3 +1,4 @@
+<?php require_once 'admin/config.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,6 +153,7 @@
         <!-- CARDÁPIO -->
         <div class="menu-container">
             
+            <?php include 'includes/cardapio-content.php'; ?>
             <!-- SEÇÃO PETISCOS -->
             <section class="menu-section" id="petiscos">
                 <div class="container">
