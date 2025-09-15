@@ -1,0 +1,182 @@
+/* Custom styles to complement Tailwind */
+
+.tab-button.active {
+    @apply border-blue-500 text-blue-600;
+}
+
+.tab-button:not(.active) {
+    @apply border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300;
+}
+
+.tab-content {
+    @apply block;
+}
+
+.tab-content.hidden {
+    @apply hidden;
+}
+
+/* Photo grid animations */
+.photo-item {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+}
+
+.photo-item img {
+    @apply transition-all duration-300;
+}
+
+.photo-item:hover img {
+    @apply brightness-110;
+}
+
+/* Modal animations */
+#photo-modal {
+    @apply transition-all duration-300;
+}
+
+#photo-modal.show {
+    @apply block;
+}
+
+/* Upload area drag and drop styles */
+.upload-area-dragover {
+    @apply border-blue-400 bg-blue-50;
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: width 0.3s ease-in-out;
+}
+
+/* Album card hover effects */
+.album-card {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+.album-card:hover .album-image {
+    @apply scale-110;
+}
+
+/* Photo preview animations */
+.photo-preview {
+    @apply transition-all duration-200 hover:scale-105;
+}
+
+/* Loading spinner */
+.spinner {
+    @apply animate-spin rounded-full border-4 border-blue-500 border-t-transparent;
+}
+
+/* Message styles */
+.message-success {
+    @apply bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-lg mb-4;
+}
+
+.message-error {
+    @apply bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4;
+}
+
+.message-info {
+    @apply bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg mb-4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .photo-modal-nav {
+        @apply text-white/80 hover:text-white;
+    }
+    
+    .photo-modal-image {
+        @apply max-h-[80vh];
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-400 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+}
+
+/* Focus styles */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-opacity-50;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Photo grid masonry effect */
+.photos-masonry {
+    column-count: 2;
+    column-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .photos-masonry {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1024px) {
+    .photos-masonry {
+        column-count: 4;
+    }
+}
+
+@media (min-width: 1280px) {
+    .photos-masonry {
+        column-count: 5;
+    }
+}
+
+@media (min-width: 1536px) {
+    .photos-masonry {
+        column-count: 6;
+    }
+}
+
+.photos-masonry .photo-item {
+    @apply break-inside-avoid mb-4;
+}

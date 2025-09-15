@@ -1,0 +1,14 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pinaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFACD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0E68C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="200" fill="#1a1a1a"/>
+  <path d="M120 170 Q120 50 150 50 Q180 50 180 170 Z" fill="url(#pinaGradient)"/>
+  <ellipse cx="150" cy="45" rx="30" ry="10" fill="#FFFFFF" opacity="0.8"/>
+  <rect x="145" y="30" width="10" height="20" fill="#228B22"/>
+  <ellipse cx="150" cy="25" rx="15" ry="8" fill="#32CD32"/>
+  <text x="150" y="190" text-anchor="middle" fill="#F0E68C" font-family="Arial, sans-serif" font-size="12" font-weight="bold">PIÑA COLADA</text>
+</svg>

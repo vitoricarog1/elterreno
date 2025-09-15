@@ -1,0 +1,251 @@
+# 💻 TUTORIAL: Setup Rápido Local (XAMPP + Configuração Automática)
+
+## 🎯 OBJETIVO
+Configurar a galeria de fotos localmente em poucos minutos usando XAMPP.
+
+## 📋 PRÉ-REQUISITOS MÍNIMOS
+
+1. **XAMPP instalado**
+   - Download: https://www.apachefriends.org/
+   - Versão: 8.0+ (com PHP 8.0+)
+
+2. **Python 3.6+** (para script automático)
+   - Download: https://www.python.org/
+   - Marcar "Add to PATH" na instalação
+
+## 🚀 SETUP AUTOMÁTICO (RECOMENDADO)
+
+### PASSO 1: Executar Script Python
+
+1. **Abrir terminal/prompt** na pasta do projeto
+
+2. **Executar o script:**
+   ```bash
+   python setup_local.py
+   ```
+
+3. **O script vai:**
+   - ✅ Verificar se XAMPP está rodando
+   - ✅ Copiar arquivos para htdocs
+   - ✅ Configurar banco de dados
+   - ✅ Criar usuário admin
+   - ✅ Testar instalação
+   - ✅ Abrir navegador automaticamente
+
+### PASSO 2: Verificar Funcionamento
+
+O script abrirá automaticamente:
+- http://localhost/galeria/ (página principal)
+- http://localhost/galeria/gallerydev/admin/ (painel admin)
+
+**Credenciais padrão:**
+- Usuário: admin
+- Senha: admin123
+
+## 🔧 SETUP MANUAL (ALTERNATIVO)
+
+### PASSO 1: Iniciar XAMPP
+
+1. **Abrir XAMPP Control Panel**
+2. **Start:** Apache + MySQL
+3. **Verificar:** Ícones ficam verdes
+
+### PASSO 2: Copiar Arquivos
+
+1. **Navegar para:**
+   ```
+   C:\xampp\htdocs\
+   ```
+
+2. **Criar pasta:**
+   ```
+   C:\xampp\htdocs\galeria\
+   ```
+
+3. **Copiar todos os arquivos** do projeto para esta pasta
+
+### PASSO 3: Instalar Sistema
+
+1. **Abrir navegador:**
+   ```
+   http://localhost/galeria/gallerydev/install.php
+   ```
+
+2. **Configurar admin e instalar**
+
+3. **Testar funcionamento**
+
+## 🎨 PERSONALIZAÇÃO RÁPIDA
+
+### Alterar Cores/Design:
+
+1. **Editar:** `gallerydev/assets/css/style.css`
+2. **Modificar variáveis CSS:**
+   ```css
+   :root {
+       --primary-color: #sua-cor;
+       --secondary-color: #sua-cor-2;
+   }
+   ```
+
+### Adicionar Logo:
+
+1. **Colocar logo** em: `gallerydev/assets/img/logo.png`
+2. **Editar navbar** nos arquivos PHP
+
+### Configurar Textos:
+
+1. **Editar títulos** em cada arquivo PHP
+2. **Personalizar mensagens** de boas-vindas
+
+## 📊 TESTE DE PERFORMANCE
+
+### Verificar Funcionamento:
+
+1. **Criar álbum de teste** com 20+ fotos
+2. **Testar paginação** (50 fotos/página)
+3. **Verificar lightbox** em diferentes tamanhos
+4. **Testar responsividade** (F12 → Device Mode)
+
+### Benchmark Local:
+
+- **Tempo de carregamento:** < 2 segundos
+- **Upload de 10 fotos:** < 30 segundos
+- **Geração de thumbnails:** Automática
+- **Redimensionamento:** Automático
+
+## 🔄 WORKFLOW DE DESENVOLVIMENTO
+
+### Para Adicionar Funcionalidades:
+
+1. **Editar arquivos** no VS Code
+2. **Salvar** (Ctrl+S)
+3. **Atualizar navegador** (F5)
+4. **Testar mudanças**
+
+### Para Backup Local:
+
+1. **Exportar banco:**
+   - phpMyAdmin → Export → SQL
+   - Salvar arquivo .sql
+
+2. **Copiar uploads:**
+   - Copiar pasta gallerydev/uploads/
+
+## 🐛 DEBUG E LOGS
+
+### Habilitar Debug:
+
+1. **Editar config.php:**
+   ```php
+   // Adicionar no final
+   if (DB_HOST === 'localhost') {
+       ini_set('display_errors', 1);
+       error_reporting(E_ALL);
+   }
+   ```
+
+### Verificar Logs:
+
+1. **Logs do Apache:**
+   ```
+   C:\xampp\apache\logs\error.log
+   ```
+
+2. **Logs do PHP:**
+   ```
+   C:\xampp\php\logs\php_error_log
+   ```
+
+## 🔧 CONFIGURAÇÕES AVANÇADAS
+
+### Aumentar Limites PHP:
+
+1. **Editar:** `C:\xampp\php\php.ini`
+2. **Modificar:**
+   ```ini
+   upload_max_filesize = 20M
+   post_max_size = 25M
+   max_execution_time = 300
+   memory_limit = 256M
+   ```
+3. **Reiniciar Apache** no XAMPP
+
+### Habilitar Extensões:
+
+1. **No php.ini, descomentar:**
+   ```ini
+   extension=gd
+   extension=pdo_mysql
+   extension=fileinfo
+   ```
+
+## 📱 TESTE MOBILE LOCAL
+
+### Acessar do Celular:
+
+1. **Descobrir IP do PC:**
+   ```cmd
+   ipconfig
+   ```
+
+2. **Conectar celular na mesma rede WiFi**
+
+3. **Acessar:**
+   ```
+   http://192.168.1.XXX/galeria/
+   ```
+
+## 🎯 CHECKLIST FINAL
+
+Antes de considerar pronto:
+
+- [ ] XAMPP rodando (Apache + MySQL)
+- [ ] Galeria acessível em localhost/galeria/
+- [ ] Admin panel funcionando
+- [ ] Upload de fotos funciona
+- [ ] Thumbnails são gerados
+- [ ] Lightbox funciona
+- [ ] Paginação funciona
+- [ ] Design responsivo
+- [ ] Sem erros no console do navegador
+
+## 🚀 PRÓXIMOS PASSOS
+
+Após setup local:
+
+1. **Adicionar conteúdo real:**
+   - Criar álbuns dos seus eventos
+   - Upload das suas fotos
+
+2. **Personalizar design:**
+   - Cores da sua marca
+   - Logo personalizado
+   - Textos customizados
+
+3. **Preparar para produção:**
+   - Seguir tutorial SETUP-HOSTINGER.txt
+   - Configurar domínio
+   - Deploy final
+
+## 📞 TROUBLESHOOTING RÁPIDO
+
+### XAMPP não inicia:
+- Verificar se porta 80 está livre
+- Executar como administrador
+- Verificar antivírus/firewall
+
+### Página em branco:
+- Verificar logs de erro
+- Conferir sintaxe PHP
+- Verificar se arquivo existe
+
+### Banco não conecta:
+- Verificar se MySQL está rodando
+- Conferir credenciais em config.php
+- Testar conexão via phpMyAdmin
+
+---
+✅ **DESENVOLVIMENTO LOCAL CONFIGURADO!**
+
+🎨 **Agora é só personalizar e adicionar seu conteúdo!**

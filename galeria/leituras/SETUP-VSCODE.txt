@@ -1,0 +1,208 @@
+# 🚀 TUTORIAL: Configurar Galeria de Fotos no VS Code (Desenvolvimento Local)
+
+## 📋 PRÉ-REQUISITOS
+
+1. **XAMPP** ou **WAMP** instalado
+   - Download XAMPP: https://www.apachefriends.org/
+   - Instalar na pasta padrão (C:\xampp\ no Windows)
+
+2. **VS Code** instalado
+   - Download: https://code.visualstudio.com/
+   - Extensões recomendadas:
+     * PHP Intelephense
+     * PHP Debug
+     * Auto Rename Tag
+     * Bracket Pair Colorizer
+
+3. **Git** (opcional, mas recomendado)
+   - Download: https://git-scm.com/
+
+## 🔧 PASSO A PASSO - CONFIGURAÇÃO
+
+### PASSO 1: Preparar o Ambiente XAMPP
+
+1. **Iniciar XAMPP Control Panel**
+   - Iniciar serviços: Apache + MySQL
+   - Verificar se estão rodando (ícones verdes)
+
+2. **Acessar phpMyAdmin** (opcional - para verificar)
+   - Abrir: http://localhost/phpmyadmin/
+   - Verificar se MySQL está funcionando
+
+### PASSO 2: Configurar o Projeto
+
+1. **Navegar para pasta do XAMPP:**
+   ```
+   C:\xampp\htdocs\
+   ```
+
+2. **Criar pasta do projeto:**
+   ```
+   C:\xampp\htdocs\galeria\
+   ```
+
+3. **Copiar todos os arquivos** da galeria para esta pasta
+
+4. **Estrutura final deve ficar:**
+   ```
+   C:\xampp\htdocs\galeria\
+   ├── index.php
+   ├── ultimos.php
+   ├── README.md
+   └── gallerydev/
+       ├── admin/
+       ├── includes/
+       ├── assets/
+       └── ...
+   ```
+
+### PASSO 3: Abrir no VS Code
+
+1. **Abrir VS Code**
+
+2. **File → Open Folder**
+   - Selecionar: `C:\xampp\htdocs\galeria\`
+
+3. **Verificar estrutura** no Explorer do VS Code
+
+### PASSO 4: Configurar o Banco de Dados
+
+1. **Abrir navegador** e acessar:
+   ```
+   http://localhost/galeria/gallerydev/install.php
+   ```
+
+2. **Configurar credenciais admin:**
+   - Usuário: admin (ou personalizar)
+   - Senha: admin123 (ou personalizar)
+   - Clicar em "🚀 Instalar Sistema"
+
+3. **Aguardar confirmação:**
+   - Banco criado ✅
+   - Tabelas criadas ✅
+   - Usuário admin criado ✅
+   - Diretórios criados ✅
+
+### PASSO 5: Testar o Sistema
+
+1. **Acessar a galeria:**
+   ```
+   http://localhost/galeria/
+   ```
+
+2. **Acessar página últimos:**
+   ```
+   http://localhost/galeria/ultimos.php
+   ```
+
+3. **Acessar painel admin:**
+   ```
+   http://localhost/galeria/gallerydev/admin/
+   ```
+   - Login: admin / admin123
+
+### PASSO 6: Criar Primeiro Álbum (Teste)
+
+1. **No painel admin:**
+   - Dashboard → "Criar Álbum"
+   - Preencher dados de teste
+   - Salvar
+
+2. **Fazer upload de fotos:**
+   - "Upload Fotos" → Selecionar álbum
+   - Arrastar fotos ou clicar para selecionar
+   - Upload automático com otimização
+
+3. **Verificar funcionamento:**
+   - Voltar para http://localhost/galeria/
+   - Ver álbum criado no grid
+   - Clicar para visualizar fotos
+
+## 🛠️ DESENVOLVIMENTO NO VS CODE
+
+### Configurações Recomendadas:
+
+1. **Criar .vscode/settings.json:**
+   ```json
+   {
+     "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+     "php.suggest.basic": false,
+     "emmet.includeLanguages": {
+       "php": "html"
+     }
+   }
+   ```
+
+2. **Extensões úteis:**
+   - PHP Intelephense (autocomplete)
+   - PHP Debug (debugging)
+   - Live Server (para arquivos estáticos)
+
+### Dicas de Desenvolvimento:
+
+1. **Para editar PHP:**
+   - Use Intelephense para autocomplete
+   - Ctrl+Shift+P → "PHP: Restart Language Server" se travar
+
+2. **Para testar mudanças:**
+   - Salvar arquivo (Ctrl+S)
+   - Atualizar navegador (F5)
+   - Não precisa reiniciar Apache
+
+3. **Para debug:**
+   - Usar var_dump() ou print_r()
+   - Verificar logs do Apache em C:\xampp\apache\logs\
+
+## 🔍 SOLUÇÃO DE PROBLEMAS
+
+### Erro "Banco não conecta":
+- Verificar se MySQL está rodando no XAMPP
+- Conferir credenciais em gallerydev/includes/config.php
+
+### Erro "Página não carrega":
+- Verificar se Apache está rodando
+- Conferir se está acessando http://localhost/galeria/
+
+### Erro "Upload não funciona":
+- Verificar permissões da pasta uploads/
+- Conferir se GD extension está ativa no PHP
+
+### Erro "Fotos não aparecem":
+- Verificar se as imagens estão em gallerydev/uploads/
+- Conferir caminhos no config.php
+
+## 📱 TESTE EM DISPOSITIVOS
+
+1. **Descobrir IP local:**
+   - CMD → ipconfig
+   - Anotar IP (ex: 192.168.1.100)
+
+2. **Acessar do celular:**
+   ```
+   http://192.168.1.100/galeria/
+   ```
+
+3. **Testar responsividade:**
+   - Grid adapta automaticamente
+   - Lightbox funciona no touch
+   - Menu responsivo
+
+## 🎯 PRÓXIMOS PASSOS
+
+Após configurar:
+1. Personalizar design em assets/css/style.css
+2. Adicionar mais álbuns de teste
+3. Testar upload de várias fotos
+4. Configurar backup automático
+5. Preparar para produção (Hostinger)
+
+## 📞 SUPORTE
+
+Se algo não funcionar:
+1. Verificar logs do Apache/PHP
+2. Conferir se todas as extensões PHP estão ativas
+3. Testar passo a passo cada funcionalidade
+4. Verificar permissões de pastas
+
+---
+✅ **SISTEMA PRONTO PARA DESENVOLVIMENTO LOCAL!**

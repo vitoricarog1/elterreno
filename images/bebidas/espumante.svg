@@ -1,0 +1,15 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="champagneGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0F8FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E6E6FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="200" fill="#1a1a1a"/>
+  <rect x="130" y="50" width="40" height="120" rx="5" fill="url(#champagneGradient)"/>
+  <ellipse cx="150" cy="45" rx="20" ry="8" fill="#F0F8FF"/>
+  <circle cx="140" cy="70" r="2" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="160" cy="90" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="145" cy="110" r="1" fill="#FFFFFF" opacity="0.8"/>
+  <text x="150" y="190" text-anchor="middle" fill="#E6E6FA" font-family="Arial, sans-serif" font-size="12" font-weight="bold">ESPUMANTE</text>
+</svg>

@@ -1,0 +1,2013 @@
+/* El Terreno - Clean & Responsive Design */
+
+/* CSS Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #6d5db2;
+    --secondary-color: #ff248e;
+    --accent-color: #7f67db;
+    --gradient-primary: linear-gradient(45deg, #6d5db2, #ff248e, #7f67db);
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --text-muted: #cccccc;
+    --bg-dark: #232323;
+    --bg-card: rgba(109, 93, 178, 0.1);
+    --border-radius: 12px;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 12px 40px rgba(109, 93, 178, 0.2);
+    --max-width: 1400px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+/* Base Typography */
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-light);
+    background: var(--bg-dark);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Mukta', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Container & Layout */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+}
+
+.col-12 { flex: 0 0 100%; }
+.col-6 { flex: 0 0 50%; }
+.col-4 { flex: 0 0 33.333%; }
+.col-3 { flex: 0 0 25%; }
+
+[class*="col-"] {
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    min-height: 44px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn-accent {
+    background: var(--accent-color);
+    color: var(--bg-dark);
+}
+
+.btn-accent:hover {
+    background: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* Navigation */
+/* Menu styles moved to menu-styles.css */
+
+/* Mobile menu styles moved to menu-styles.css */
+
+/* Animações de Scroll Sutis e Harmônicas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Classes para animações de scroll */
+.scroll-animate {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.animate-in {
+    opacity: 1;
+}
+
+.fade-up {
+    transform: translateY(30px);
+}
+
+.fade-up.animate-in {
+    transform: translateY(0);
+}
+
+.fade-left {
+    transform: translateX(-30px);
+}
+
+.fade-left.animate-in {
+    transform: translateX(0);
+}
+
+.fade-right {
+    transform: translateX(30px);
+}
+
+.fade-right.animate-in {
+    transform: translateX(0);
+}
+
+.scale-in {
+    transform: scale(0.95);
+}
+
+.scale-in.animate-in {
+    transform: scale(1);
+}
+
+/* Animações específicas para elementos do site */
+.gallery-card {
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.gallery-card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.gallery-title {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+.gallery-title.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animação suave para cards */
+.card {
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(25px);
+    opacity: 0;
+}
+
+.card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animação para seções */
+section {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Otimização de performance */
+.scroll-animate,
+.gallery-card,
+.gallery-title,
+.card {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+/* Remove will-change após animação para economizar recursos */
+.scroll-animate.animate-in,
+.gallery-card.animate-in,
+.gallery-title.animate-in,
+.card.animate-in {
+    will-change: auto;
+}
+
+/* Otimizações específicas para GPU */
+.navbar {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.mobile-menu-overlay {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.carousel-item {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Otimização para dispositivos móveis */
+@media (max-width: 768px) {
+    .scroll-animate {
+        transition-duration: 0.5s; /* Animações mais rápidas em mobile */
+    }
+    
+    .gallery-card {
+        transition-duration: 0.4s;
+    }
+    
+    .card {
+        transition-duration: 0.4s;
+    }
+}
+
+/* Desabilita animações em dispositivos com baixa performance */
+@media (max-width: 480px) and (max-height: 800px) {
+    .scroll-animate,
+    .gallery-card,
+    .gallery-title,
+    .card {
+        transition-duration: 0.2s;
+    }
+}
+
+/* Reduzir animações em dispositivos com preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-animate,
+    .gallery-card,
+    .gallery-title,
+    .card {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Garantir que o menu desktop seja visível em telas grandes */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: flex !important;
+    }
+    
+    .mobile-header {
+        display: none !important;
+    }
+}
+
+/* Mobile Menu Styles - Original */
+
+/* Mobile Menu Overlay - Antigo */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 70px; /* Posicionar logo abaixo do header mobile */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 9998;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.show {
+    transform: translateX(0);
+}
+
+/* Mobile Menu Content */
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 2rem;
+}
+
+.mobile-menu-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 1.5rem 0;
+    position: relative;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.mobile-menu-overlay.show .mobile-menu-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu-link:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu-link:nth-child(2) { transition-delay: 0.2s; }
+.mobile-menu-link:nth-child(3) { transition-delay: 0.3s; }
+.mobile-menu-link:nth-child(4) { transition-delay: 0.4s; }
+.mobile-menu-link:nth-child(5) { transition-delay: 0.5s; }
+
+.mobile-menu-link:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.mobile-menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.mobile-menu-link:hover::after {
+    width: 100%;
+}
+
+/* Mobile Menu Close Button */
+.mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.mobile-menu-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.close-line {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.close-line-1 {
+    transform: rotate(45deg);
+}
+
+.close-line-2 {
+    transform: rotate(-45deg);
+}
+
+.mobile-menu-close:hover .close-line {
+    background: var(--accent-color);
+}
+
+.animated-icon3 {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    margin: 0px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.animated-icon3 span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+    background: #f3e5f5;
+}
+
+.animated-icon3 span:nth-child(1) {
+    top: 0px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.animated-icon3 span:nth-child(2) {
+    top: 10px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.animated-icon3 span:nth-child(3) {
+    top: 20px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+}
+
+.animated-icon3.open span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 0px;
+    left: 8px;
+}
+
+.animated-icon3.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.animated-icon3.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 21px;
+    left: 8px;
+}
+
+.menu0 {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu0 a {
+    color: white;
+}
+
+/* Carousel */
+.carousel {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-item {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Carousel Fade Animation */
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: 0.8s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end {
+    z-index: 1;
+    opacity: 1;
+}
+
+.carousel-fade .carousel-item-next:not(.carousel-item-start),
+.carousel-fade .carousel-item-prev:not(.carousel-item-end) {
+    transform: none;
+}
+
+/* Carousel Transitioning State */
+.carousel.transitioning {
+    pointer-events: none;
+}
+
+.carousel.transitioning .carousel-item {
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    max-width: 600px;
+}
+
+.carousel-caption h1 {
+    font-family: 'Luxurious Roman', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+}
+
+.card-text {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* Postcard Style */
+.postcard {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.postcard__img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.postcard__text {
+    padding: 1.5rem;
+}
+
+.postcard__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.postcard__preview-txt {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(109, 93, 178, 0.6), rgba(255, 33, 137, 0.4));
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(109, 93, 178, 0.8), rgba(255, 33, 137, 0.6));
+    transform: scale(1.1);
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(109, 93, 178, 0.6) rgba(0, 0, 0, 0.1);
+}
+
+/* For better visual consistency */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(109, 93, 178, 0.6) rgba(0, 0, 0, 0.1);
+}
+
+.postcard__bar {
+    display: none;
+}
+
+/* Gallery Cards - Modernized */
+.gallery-card {
+    height: 450px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-card-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.gallery-badge {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(109, 93, 178, 0.3);
+}
+
+.gallery-card-footer {
+    position: relative;
+}
+
+.gallery-card-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.gallery-card-date {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-card-overlay {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.8rem 1.2rem;
+    border-radius: 25px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gallery-card:hover .gallery-card-overlay {
+    opacity: 1;
+}
+
+.gallery-card-overlay span {
+    display: block;
+    margin-top: 0.3rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Instagram Button - Modernized */
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(131, 58, 180, 0.3);
+    margin-top: 2rem;
+}
+
+.instagram-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(131, 58, 180, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+.instagram-btn-glow {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.instagram-btn:hover .instagram-btn-glow {
+    left: 100%;
+}
+
+.instagram-btn i {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+}
+
+/* Instagram Section */
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.instagram-post {
+    aspect-ratio: 1;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.instagram-post:hover {
+    transform: scale(1.05);
+}
+
+.instagram-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.instagram-story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  padding: 1rem;
+}
+
+.instagram-story:hover {
+  transform: translateY(-3px);
+  color: var(--accent-color);
+}
+
+.story-circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(109, 93, 178, 0.1);
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-circle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(109, 93, 178, 0.2), rgba(109, 93, 178, 0.05));
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.instagram-story:hover .story-circle {
+  transform: scale(1.05);
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(109, 93, 178, 0.4);
+}
+
+.instagram-story:hover .story-circle::before {
+  opacity: 1;
+}
+
+/* Social Media */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+/* WhatsApp Float Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background: #128c7e;
+}
+
+/* Forms */
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* Sections */
+section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-title p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.hidden {
+    display: none !important;
+}
+
+/* Text Elements - Layout Melhorado */
+.text-white {
+    color: white !important;
+}
+
+.text-muted {
+    color: rgba(255, 255, 255, 0.7) !important; /* Mais legível */
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Links - Mobile */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+a:hover, a:focus {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Listas */
+ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.75rem; /* Mais espaço entre itens */
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Elementos de Destaque */
+.highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.lead {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Separadores */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 2.5rem 0;
+}
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mt-5 { margin-top: 3rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+.p-5 { padding: 3rem; }
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+
+/* Responsive Design */
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 0 2rem;
+    }
+    
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .carousel-caption h1 {
+        font-size: 2.5rem;
+    }
+    
+    .col-md-6 { flex: 0 0 50%; }
+    .col-md-4 { flex: 0 0 50%; }
+    .col-md-3 { flex: 0 0 50%; }
+}
+
+/* Mobile (max-width: 991px) */
+@media (max-width: 991px) {
+    /* Typography Melhorada */
+    body {
+        font-size: 16px; /* Aumentado para melhor legibilidade */
+        line-height: 1.7; /* Melhor espaçamento entre linhas */
+    }
+    
+    h1 { 
+        font-size: 2.2rem; /* Aumentado para mais impacto */
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 { 
+        font-size: 1.8rem; /* Aumentado */
+        line-height: 1.3;
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.3px;
+    }
+    
+    h3 { 
+        font-size: 1.5rem; /* Aumentado */
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+    
+    h4 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+    }
+    
+    p {
+        font-size: 1rem; /* Tamanho consistente */
+        line-height: 1.7; /* Melhor legibilidade */
+        margin-bottom: 1.5rem; /* Mais espaço entre parágrafos */
+        color: rgba(255, 255, 255, 0.9); /* Melhor contraste */
+    }
+    
+    /* Container - Espaçamento Melhorado */
+    .container {
+        padding: 0 1.5rem; /* Mais espaço nas laterais */
+        max-width: 100%;
+    }
+    
+    /* Navigation */
+    .navbar-toggler {
+        display: block !important;
+    }
+    
+    .navbar-collapse {
+        display: none !important;
+    }
+    
+    .mobile-menu-overlay {
+        display: block;
+    }
+    
+    .mobilemenu {
+        display: block !important;
+    }
+    
+    .mobilemenu .container-fluid {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    
+    .mobilemenu .navbar-toggler {
+        order: 1;
+        margin-right: auto;
+    }
+    
+    .mobilemenu .navbar-brand {
+        order: 2;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Carousel */
+    .carousel {
+        margin-top: 0; /* Removido margin-top para corrigir problema de rolagem */
+        z-index: 1;
+    }
+    
+    .carousel-item {
+        height: 70vh; /* Reduzido de 100vh para permitir rolagem */
+        min-height: 400px;
+        z-index: 1;
+    }
+    
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+    
+    .carousel-caption {
+        bottom: 15%; /* Melhor posicionamento */
+        padding: 1.5rem; /* Mais espaço interno */
+        max-width: 95%; /* Mais largura */
+        border-radius: 12px; /* Bordas mais suaves */
+        backdrop-filter: blur(15px); /* Mais blur */
+        background: rgba(0, 0, 0, 0.75); /* Fundo mais opaco */
+    }
+    
+    .carousel-caption h1 {
+        font-size: 2.2rem; /* Aumentado significativamente */
+        margin-bottom: 1rem; /* Mais espaço */
+        line-height: 1.2;
+        font-weight: 700;
+        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
+        letter-spacing: -0.5px;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.1rem; /* Aumentado */
+        margin-bottom: 1.5rem; /* Mais espaço */
+        line-height: 1.6;
+        opacity: 0.95;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* Grid System */
+    .col-6,
+    .col-4,
+    .col-3,
+    .col-md-6,
+    .col-md-4,
+    .col-md-3 {
+        flex: 0 0 100%;
+    }
+    
+    /* Cards - Layout Melhorado */
+    .card {
+        border-radius: 16px; /* Bordas mais suaves */
+        overflow: hidden;
+        margin-bottom: 2rem; /* Mais espaço entre cards */
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .card-body {
+        padding: 1.5rem; /* Mais espaço interno */
+    }
+    
+    .card-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        color: var(--text-light);
+    }
+    
+    .card-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Postcard - Layout Melhorado */
+    .postcard {
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    .postcard__img {
+        height: 220px; /* Mais altura */
+        object-fit: cover;
+    }
+    
+    .postcard__text {
+        padding: 1.5rem; /* Mais espaço interno */
+    }
+    
+    .postcard__title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+    
+    .postcard__subtitle {
+        font-size: 1rem;
+        line-height: 1.6;
+        opacity: 0.8;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Instagram Section - Mobile Melhorado */
+    #instagram {
+        padding: 4rem 0; /* Mais espaço vertical */
+    }
+    
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem; /* Mais espaço entre posts */
+        margin: 3rem 0; /* Mais margem */
+        padding: 0 0.5rem;
+    }
+    
+    .instagram-post {
+        aspect-ratio: 1;
+        border-radius: 16px; /* Bordas mais suaves */
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+    
+    .instagram-post:hover {
+        transform: scale(1.02);
+    }
+    
+    .instagram-placeholder {
+        padding: 2rem 1rem; /* Mais espaço interno */
+        text-align: center;
+    }
+    
+    .instagram-placeholder p {
+        font-size: 0.95rem;
+        margin-bottom: 0;
+        opacity: 0.8;
+    }
+    
+    /* Instagram Stories */
+    .instagram-stories {
+        gap: 1.5rem; /* Mais espaço entre stories */
+        margin-top: 2rem;
+    }
+    
+    .instagram-story {
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .story-circle {
+        width: 70px; /* Maior para melhor touch */
+        height: 70px;
+        margin-bottom: 0.8rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        font-size: 1.5rem;
+    }
+    
+    /* Gallery Cards - Mobile Melhorado */
+    .gallery-card {
+        height: 320px; /* Mais altura para melhor proporção */
+        margin-bottom: 2rem; /* Mais espaço entre cards */
+        border-radius: 16px; /* Bordas mais suaves */
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .gallery-card-title {
+        font-size: 1.6rem; /* Aumentado */
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    
+    .gallery-card-date {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        margin-bottom: 0;
+    }
+    
+    .gallery-badge {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Buttons - Mobile Otimizado */
+    .btn {
+        padding: 1.2rem 2rem; /* Mais espaço para touch */
+        font-size: 1.1rem; /* Texto maior */
+        font-weight: 600;
+        width: 100%;
+        margin-bottom: 1rem; /* Mais espaço entre botões */
+        border-radius: 12px; /* Bordas mais suaves */
+        letter-spacing: 0.5px;
+        min-height: 56px; /* Altura mínima para acessibilidade */
+        line-height: 1.4;
+        text-transform: uppercase;
+    }
+    
+    .btn-secondary,
+    .btn-lg {
+        padding: 1.4rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border-radius: 50px;
+        letter-spacing: 1px;
+    }
+    
+    .instagram-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 25px;
+        margin-top: 1.5rem;
+    }
+    
+    /* Social Links - Mobile Melhorado */
+    .socials {
+        gap: 1.5rem !important; /* Mais espaço entre ícones */
+        margin: 2rem auto !important;
+        justify-content: center !important;
+        padding: 1rem 0;
+    }
+    
+    .social-link {
+        width: 50px; /* Maior para melhor touch */
+        height: 50px;
+        font-size: 1.4rem; /* Ícone maior */
+        border-radius: 12px; /* Bordas mais suaves */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .social-link:hover {
+        transform: translateY(-3px) scale(1.05);
+        background: var(--primary-color);
+        box-shadow: 0 8px 25px rgba(109, 93, 178, 0.4);
+    }
+    
+    /* WhatsApp Button - Mobile Melhorado */
+    .whatsapp-float {
+        width: 60px; /* Maior para melhor visibilidade */
+        height: 60px;
+        bottom: 20px; /* Mais espaço da borda */
+        right: 20px;
+        font-size: 1.5rem; /* Ícone maior */
+        border-radius: 50%;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+    }
+    
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+    }
+    
+    /* Sections - Espaçamento Otimizado */
+    section {
+        padding: 3rem 0; /* Mais espaço vertical */
+        margin-bottom: 1rem;
+    }
+    
+    .section-title {
+        margin-bottom: 2.5rem; /* Mais espaço após títulos */
+        padding: 0 1rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem; /* Aumentado */
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    
+    .section-title p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Form - Mobile Melhorado */
+    .form-control {
+        padding: 1.2rem; /* Mais espaço interno */
+        font-size: 1.1rem; /* Texto maior */
+        border-radius: 12px; /* Bordas mais suaves */
+        margin-bottom: 1.5rem; /* Mais espaço entre campos */
+        min-height: 56px; /* Altura mínima para touch */
+        line-height: 1.5;
+    }
+    
+    /* Contact Section - Mobile */
+    #contact {
+        padding: 4rem 0; /* Mais espaço vertical */
+    }
+    
+    #contact .container {
+        padding: 0 2rem; /* Mais espaço lateral */
+    }
+    
+    #contact p {
+        font-size: 1.1rem; /* Texto maior */
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .google-map {
+        border-radius: 16px; /* Bordas mais suaves */
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+}
+
+    /* Títulos Especiais - Mobile */
+    .gallery-title {
+        font-size: 2.5rem !important; /* Título principal da galeria */
+        line-height: 1.1 !important;
+        margin-bottom: 1.5rem !important;
+        text-align: center;
+        font-weight: 700 !important;
+        letter-spacing: -0.8px;
+    }
+    
+    .heading-primary {
+        font-size: 2rem; /* Títulos principais das seções */
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+    }
+    
+    .heading-secondary {
+        font-size: 1.6rem; /* Subtítulos */
+        line-height: 1.3;
+        margin-bottom: 1.25rem;
+        font-weight: 600;
+    }
+    
+    .gallery-description {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 2rem !important;
+        opacity: 0.9;
+    }
+    
+    .text-body {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+    }
+    
+    .text-small {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        opacity: 0.8;
+    }
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    h1 { font-size: 1.8rem; } /* Aumentado */
+    h2 { font-size: 1.5rem; } /* Aumentado */
+    h3 { font-size: 1.3rem; }
+    
+    .carousel-caption h1 {
+        font-size: 1.8rem; /* Aumentado */
+    }
+    
+    .gallery-title {
+        font-size: 2rem !important; /* Ajustado para telas muito pequenas */
+    }
+    
+    .heading-primary {
+        font-size: 1.7rem;
+    }
+    
+    .instagram-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .social-links {
+        gap: 1rem; /* Mais espaço */
+    }
+    
+    .social-link {
+        width: 45px; /* Maior */
+        height: 45px;
+        font-size: 1.3rem; /* Maior */
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+/* Smooth scrolling removed */
+
+/* Focus States for Accessibility */
+.btn:focus,
+.nav-link:focus,
+.form-control:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Animated Icons */
+.icon-music, .icon-food, .icon-drink {
+    display: inline-block;
+    font-size: 2rem;
+    margin: var(--spacing-sm);
+    color: var(--primary-color);
+    transition: var(--transition);
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.icon-music {
+    animation-delay: 0s;
+}
+
+.icon-food {
+    animation-delay: 1s;
+}
+
+.icon-drink {
+    animation-delay: 2s;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(-3deg);
+    }
+    75% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+}
+
+.icon-music:hover {
+    animation: musicPulse 0.6s ease-in-out;
+    color: var(--secondary-color);
+}
+
+.icon-food:hover {
+    animation: foodBounce 0.6s ease-in-out;
+    color: var(--accent-color);
+}
+
+.icon-drink:hover {
+    animation: drinkShake 0.6s ease-in-out;
+    color: var(--secondary-color);
+}
+
+@keyframes musicPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2) rotate(10deg); }
+}
+
+@keyframes foodBounce {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-15px) rotate(-5deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
+    75% { transform: translateY(-12px) rotate(-2deg); }
+}
+
+@keyframes drinkShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-3deg); }
+    50% { transform: translateX(5px) rotate(3deg); }
+    75% { transform: translateX(-3px) rotate(-1deg); }
+}
+
+/* Enhanced Layout Improvements */
+.section-padding {
+    padding: var(--spacing-xl) 0;
+}
+
+.card-enhanced {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.card-enhanced:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+/* Improved Spacing System */
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* Enhanced Responsiveness */
+@media (max-width: 1200px) {
+    :root {
+        --max-width: 100%;
+        --spacing-xl: 2.5rem;
+        --spacing-lg: 1.8rem;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    
+    .col-4 { flex: 0 0 50%; }
+    .col-3 { flex: 0 0 50%; }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-lg: 1.2rem;
+        --spacing-md: 1rem;
+    }
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    
+    .col-6, .col-4, .col-3 { flex: 0 0 100%; }
+    
+    .card-enhanced {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .icon-music, .icon-food, .icon-drink {
+        font-size: 1.5rem;
+        margin: var(--spacing-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-xl: 1rem;
+        --spacing-lg: 0.8rem;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .whatsapp-float,
+    .social-links,
+    .icon-music,
+    .icon-food,
+    .icon-drink {
+        display: none;
+    }
+    
+    body {
+        background: white !important;
+         color: black !important;
+     }
+}
+
+/* Super Widescreen Responsiveness (1920px+) */
+@media (min-width: 1920px) {
+    :root {
+        --max-width: 1600px;
+        --spacing-xs: 0.75rem;
+        --spacing-sm: 1.25rem;
+        --spacing-md: 2rem;
+        --spacing-lg: 2.5rem;
+        --spacing-xl: 4rem;
+    }
+    
+    .container {
+        max-width: var(--max-width);
+        padding: 0 var(--spacing-lg);
+    }
+    
+    /* Carousel - Largura limitada para telas super widescreen */
+    .carousel {
+        max-width: 1600px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .carousel-item {
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    
+    .carousel-caption {
+        max-width: 800px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.75rem; }
+    h3 { font-size: 2.25rem; }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+    }
+    
+    .card-enhanced {
+        padding: var(--spacing-lg);
+    }
+    
+    .nav-link {
+        font-size: 1.1rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* Ultra Widescreen (2560px+) */
+@media (min-width: 2560px) {
+    :root {
+        --max-width: 2000px;
+        --spacing-xl: 5rem;
+    }
+    
+    .container {
+        max-width: var(--max-width);
+    }
+    
+    /* Carousel - Largura ainda mais limitada para telas ultra widescreen */
+    .carousel {
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    
+    .carousel-item {
+        max-width: 2000px;
+        margin: 0 auto;
+    }
+    
+    .carousel-caption {
+        max-width: 1000px;
+        padding: 3rem;
+    }
+    
+    h1 { font-size: 4rem; }
+    h2 { font-size: 3.25rem; }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: var(--spacing-xl);
+    }
+    
+    .section-padding {
+        padding: var(--spacing-xl) 0;
+    }
+}

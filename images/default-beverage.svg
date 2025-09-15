@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="glassGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e3f2fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bbdefb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff7043;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#d84315;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Glass -->
+  <path d="M70 60 L130 60 L125 160 L75 160 Z" fill="url(#glassGradient)" stroke="#90a4ae" stroke-width="2"/>
+  
+  <!-- Liquid -->
+  <path d="M72 80 L128 80 L124 150 L76 150 Z" fill="url(#liquidGradient)"/>
+  
+  <!-- Glass rim -->
+  <ellipse cx="100" cy="60" rx="30" ry="4" fill="#cfd8dc" stroke="#90a4ae" stroke-width="1"/>
+  
+  <!-- Bubbles -->
+  <circle cx="85" cy="120" r="3" fill="#ffffff" opacity="0.6"/>
+  <circle cx="110" cy="100" r="2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="95" cy="140" r="2.5" fill="#ffffff" opacity="0.5"/>
+  
+  <!-- Glass highlight -->
+  <path d="M75 65 L75 155 L78 155 L78 65 Z" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Text -->
+  <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">Bebida</text>
+</svg>

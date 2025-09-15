@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#232323"/>
+  <rect x="10" y="10" width="280" height="180" fill="#1a1a1a" stroke="#ff2189" stroke-width="2" rx="10"/>
+  <circle cx="150" cy="80" r="25" fill="#ff2189" opacity="0.3"/>
+  <rect x="125" y="105" width="50" height="4" fill="#ff2189" opacity="0.5" rx="2"/>
+  <rect x="135" y="115" width="30" height="3" fill="#6d5db2" opacity="0.5" rx="1.5"/>
+  <text x="150" y="140" text-anchor="middle" fill="#aaaaaa" font-family="Arial, sans-serif" font-size="12">Imagem não disponível</text>
+  <text x="150" y="160" text-anchor="middle" fill="#ff2189" font-family="Arial, sans-serif" font-size="14" font-weight="bold">El Terreno Pub</text>
+</svg>

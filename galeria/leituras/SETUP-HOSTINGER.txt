@@ -1,0 +1,292 @@
+# 🌐 TUTORIAL: Deploy da Galeria de Fotos no Hostinger
+
+## 📋 PRÉ-REQUISITOS
+
+1. **Conta Hostinger ativa** com:
+   - Hospedagem compartilhada ou VPS
+   - PHP 8.0+ habilitado
+   - MySQL database disponível
+   - Acesso ao cPanel ou hPanel
+
+2. **Arquivos da galeria** prontos para upload
+
+3. **Cliente FTP** (recomendado):
+   - FileZilla: https://filezilla-project.org/
+   - WinSCP (Windows): https://winscp.net/
+   - Ou usar File Manager do cPanel
+
+## 🚀 PASSO A PASSO - DEPLOY
+
+### PASSO 1: Preparar Banco de Dados
+
+1. **Acessar hPanel/cPanel** da Hostinger
+
+2. **Criar banco de dados:**
+   - Ir em "MySQL Databases"
+   - Criar novo banco: `galeria_fotos`
+   - Anotar: nome do banco, usuário, senha, host
+
+3. **Anotar informações:**
+   ```
+   Host: localhost (ou IP fornecido)
+   Database: seu_usuario_galeria_fotos
+   Username: seu_usuario_mysql
+   Password: sua_senha_mysql
+   ```
+
+### PASSO 2: Configurar Arquivos Localmente
+
+1. **Editar gallerydev/includes/config.php:**
+   ```php
+   // Ambiente de produção
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'seu_usuario_mysql');
+   define('DB_PASS', 'sua_senha_mysql');
+   define('DB_NAME', 'seu_usuario_galeria_fotos');
+   define('BASE_URL', 'https://seudominio.com/');
+   ```
+
+2. **Verificar caminhos:**
+   - Confirmar se BASE_URL está correto
+   - Verificar se GALLERY_PATH está como '/gallerydev/'
+
+### PASSO 3: Upload dos Arquivos
+
+#### OPÇÃO A: Via FileZilla (Recomendado)
+
+1. **Conectar via FTP:**
+   - Host: ftp.seudominio.com
+   - Usuário: seu_usuario_ftp
+   - Senha: sua_senha_ftp
+   - Porta: 21
+
+2. **Navegar para public_html:**
+   ```
+   /public_html/
+   ```
+
+3. **Upload da estrutura:**
+   ```
+   /public_html/
+   ├── index.php              ← Upload direto
+   ├── ultimos.php            ← Upload direto
+   ├── README.md              ← Upload direto
+   └── gallerydev/            ← Upload pasta completa
+       ├── admin/
+       ├── includes/
+       ├── assets/
+       └── ...
+   ```
+
+#### OPÇÃO B: Via File Manager (cPanel)
+
+1. **Acessar File Manager** no cPanel
+
+2. **Navegar para public_html**
+
+3. **Upload via interface:**
+   - Selecionar todos os arquivos
+   - Upload e extrair se necessário
+
+### PASSO 4: Configurar Permissões
+
+1. **Definir permissões das pastas:**
+   ```
+   gallerydev/uploads/        → 755
+   gallerydev/uploads/albums/ → 755
+   gallerydev/uploads/thumbs/ → 755
+   gallerydev/includes/       → 644
+   ```
+
+2. **Via FileZilla:**
+   - Clicar direito na pasta → Properties
+   - Numeric value: 755 para pastas, 644 para arquivos
+
+3. **Via File Manager:**
+   - Selecionar pasta → Permissions
+   - Marcar: Owner (Read/Write/Execute), Group (Read/Execute), World (Read/Execute)
+
+### PASSO 5: Executar Instalação
+
+1. **Acessar via navegador:**
+   ```
+   https://seudominio.com/gallerydev/install.php
+   ```
+
+2. **Configurar admin:**
+   - Usuário: admin (ou personalizar)
+   - Senha: senha_forte_123
+   - Clicar "🚀 Instalar Sistema"
+
+3. **Verificar instalação:**
+   - Banco criado ✅
+   - Tabelas criadas ✅
+   - Usuário admin criado ✅
+   - Diretórios criados ✅
+
+### PASSO 6: Testar Sistema em Produção
+
+1. **Testar página principal:**
+   ```
+   https://seudominio.com/
+   ```
+
+2. **Testar página últimos:**
+   ```
+   https://seudominio.com/ultimos.php
+   ```
+
+3. **Testar painel admin:**
+   ```
+   https://seudominio.com/gallerydev/admin/
+   ```
+
+4. **Criar álbum de teste:**
+   - Login no admin
+   - Criar álbum
+   - Upload de algumas fotos
+   - Verificar se aparecem na home
+
+## 🔧 CONFIGURAÇÕES ESPECÍFICAS HOSTINGER
+
+### PHP Settings (se necessário):
+
+1. **Aumentar limites de upload:**
+   - Criar arquivo `.htaccess` na raiz:
+   ```apache
+   php_value upload_max_filesize 20M
+   php_value post_max_size 25M
+   php_value max_execution_time 300
+   php_value memory_limit 256M
+   ```
+
+2. **Habilitar extensões PHP:**
+   - Verificar se GD, PDO, fileinfo estão ativas
+   - No hPanel: PHP Configuration → Extensions
+
+### SSL/HTTPS:
+
+1. **Forçar HTTPS** (recomendado):
+   - Adicionar no .htaccess:
+   ```apache
+   RewriteEngine On
+   RewriteCond %{HTTPS} off
+   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+   ```
+
+## 🛡️ SEGURANÇA EM PRODUÇÃO
+
+### OBRIGATÓRIO:
+
+1. **Alterar senha admin:**
+   - Login no painel
+   - Trocar senha padrão
+
+2. **Remover install.php:**
+   ```bash
+   rm gallerydev/install.php
+   ```
+
+3. **Proteger diretórios sensíveis:**
+   - Criar .htaccess em gallerydev/includes/:
+   ```apache
+   Order Deny,Allow
+   Deny from all
+   ```
+
+### RECOMENDADO:
+
+1. **Backup automático:**
+   - Configurar backup do banco via cPanel
+   - Backup da pasta uploads/
+
+2. **Monitoramento:**
+   - Verificar logs de erro regularmente
+   - Monitorar espaço em disco
+
+## 🔍 SOLUÇÃO DE PROBLEMAS
+
+### Erro "Internal Server Error":
+- Verificar logs de erro no cPanel
+- Conferir permissões de arquivos/pastas
+- Verificar sintaxe PHP
+
+### Erro "Database Connection Failed":
+- Conferir credenciais em config.php
+- Verificar se banco foi criado
+- Testar conexão via phpMyAdmin
+
+### Upload não funciona:
+- Verificar permissões da pasta uploads/ (755)
+- Conferir limites PHP (upload_max_filesize)
+- Verificar se extensão GD está ativa
+
+### Imagens não carregam:
+- Verificar caminhos em config.php
+- Conferir se arquivos existem em uploads/
+- Verificar permissões de leitura
+
+## 📊 MONITORAMENTO
+
+### Verificações Regulares:
+
+1. **Espaço em disco:**
+   - Pasta uploads/ pode crescer rapidamente
+   - Monitorar via cPanel
+
+2. **Performance:**
+   - Verificar tempo de carregamento
+   - Otimizar banco se necessário
+
+3. **Backup:**
+   - Exportar banco mensalmente
+   - Backup da pasta uploads/
+
+## 🎯 OTIMIZAÇÕES PARA PRODUÇÃO
+
+1. **Cache de imagens:**
+   - Configurar headers de cache no .htaccess
+   ```apache
+   <IfModule mod_expires.c>
+   ExpiresActive On
+   ExpiresByType image/jpg "access plus 1 month"
+   ExpiresByType image/jpeg "access plus 1 month"
+   ExpiresByType image/gif "access plus 1 month"
+   ExpiresByType image/png "access plus 1 month"
+   </IfModule>
+   ```
+
+2. **Compressão:**
+   ```apache
+   <IfModule mod_deflate.c>
+   AddOutputFilterByType DEFLATE text/plain
+   AddOutputFilterByType DEFLATE text/html
+   AddOutputFilterByType DEFLATE text/css
+   AddOutputFilterByType DEFLATE application/javascript
+   </IfModule>
+   ```
+
+## 📱 TESTE FINAL
+
+1. **Testar em diferentes dispositivos:**
+   - Desktop, tablet, mobile
+   - Diferentes navegadores
+
+2. **Verificar funcionalidades:**
+   - ✅ Grid de álbuns carrega
+   - ✅ Lightbox funciona
+   - ✅ Admin panel acessível
+   - ✅ Upload funciona
+   - ✅ Paginação funciona
+
+## 🆘 SUPORTE HOSTINGER
+
+Se precisar de ajuda:
+1. **Chat 24/7** da Hostinger
+2. **Knowledge Base:** https://support.hostinger.com/
+3. **Verificar status:** https://status.hostinger.com/
+
+---
+✅ **GALERIA FUNCIONANDO EM PRODUÇÃO!**
+
+🔗 **Próximo passo:** Personalizar design e adicionar seus álbuns!
